@@ -1,0 +1,77 @@
+body {
+
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    
+}
+
+header {
+  padding-bottom:10%;
+}
+
+
+  main {
+    flex: 1 0 auto;
+  }
+
+
+  .titulo {
+    text-align: center;
+  }
+
+
+  .col.texto {
+    text-align: center;
+  }
+
+
+  .imagenGoogle {
+    width: 40%;
+  }
+
+
+  .col.searchGoogle {
+    padding-right: 20%; 
+    padding-left: 20%;
+  }
+
+  materialize-textarea {
+    background-color: brown;
+  }
+
+  .input-field{
+
+    border: 1px solid #dfe1e5;
+    border-radius: 20px;
+
+    
+  }
+  
+  
+
+  .input-field textarea {
+    border:  #FFF; 
+    padding-right: 15px;
+    padding-bottom: 15px;
+    width: 200px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 20px;
+   }
+
+
+  
+
+   textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 0px solid #26a69a;
+    -webkit-box-shadow: 0 0px 0 0 #26a69a;
+            box-shadow: 0 0px 0 0 #26a69a;
+  }
+  /*
+      border: 1px solid #333;
+    border-radius: 20px;*/
+
+    .z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-small, .btn-floating, .dropdown-content, .collapsible, .sidenav {
+      -webkit-box-shadow: 0 2px 2px 0 rgba(255, 255, 255, 0), 0 3px 1px -2px rgba(255, 255, 255, 0), 0 1px 5px 0 rgba(255, 255, 255, 0);
+      box-shadow: 0 2px 2px 0 rgba(255, 255, 255, 0), 0 3px 1px -2px rgba(255, 255, 255, 0), 0 1px 5px 0 rgba(255, 255, 255, 0);
+  }

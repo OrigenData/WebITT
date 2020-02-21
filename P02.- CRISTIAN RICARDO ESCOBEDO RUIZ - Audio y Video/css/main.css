@@ -1,0 +1,140 @@
+body {
+    padding: 0%;
+    margin: 0%;
+    background-color: rgb(34, 34, 34);
+    
+}
+
+header {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgba(0, 0, 0, 0.432);
+    padding: 20px;
+    height: 45px;
+    color: rgb(255, 255, 255);
+    font-size: 150%;
+
+}
+
+header a {
+    color: #FFF;
+    text-decoration: none;
+
+}
+
+nav {
+    padding-left: 7%;
+}
+
+.titulo {
+    font-weight: bold;
+    float: right;
+    font-size: 180%;
+}
+
+section img {
+    width: 100%;
+}
+
+.portada {
+    overflow: hidden;
+    height: 50vh;
+}
+
+h1 {
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    color: #29ec43;
+    font-size: 45px;
+}
+
+
+footer {
+    clear: both;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgba(0, 0, 0, 0.432);
+    padding: 20px;
+    height: 45px;
+    color: rgb(255, 255, 255);
+    font-size: 150%;
+    padding-right: 7%;
+}
+
+footer img {
+    width: 48px;
+    float: right;
+    margin-right: 30px;
+}
+
+h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(85, 230, 49);
+    text-align: center;
+    
+}
+
+
+
+.carta-music{
+    background-color: rgb(192, 212, 190);
+    margin-left: 5%;
+    margin-right: 5%;
+    border-radius: 15px;
+    margin-bottom: 150px;
+}
+
+.carta-video {
+
+    background-color: rgb(192, 212, 190);
+    margin-left: 5%;
+    margin-right: 5%;
+    border-radius: 15px;
+    margin-bottom: 150px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.carta-seccion-music {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 30px ;
+}
+
+.carta-seccion-music label {
+    color: black;
+    font-size: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.carta-seccion-music audio{
+  width: 40%;
+  float: right;
+}
+
+.carta-music hr {
+    width: 80%;
+    height: 1px;
+    background-color: #363636;
+    border: none;
+}
+
+
+.carta-seccion-video {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carta-seccion-video label {
+    font-size: 32px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+
+.carta-seccion-video video {
+    width: 800px;
+}
