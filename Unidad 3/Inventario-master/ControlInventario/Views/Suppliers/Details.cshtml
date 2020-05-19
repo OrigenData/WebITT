@@ -1,58 +1,50 @@
-﻿@model ControlInventario.Models.SupplierModels
+﻿@model ControlInventario.Models.Supplier
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+    <div class="row justify-content-between">
+        <div class="col-md-6">
 
-<div>
-    <h4>SupplierModels</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.SupplierCode)
-        </dt>
+            <div class="card mb-4">
+                <div class="card-header">
+                    Detalles de @Model.SupplierName
+                </div>
+                <div class="card-body">
+                    <table class="table-borderless">
+                        <tr>
+                            <td><span class="icon text-black-50"><i class="fas fa-user-circle"></i></span></td>
+                            <td><b> @Html.DisplayFor(model => model.SupplierCode)</b></td>
+                        </tr>
+                        <tr>
+                            <td><span class="icon text-black-50"><i class="fas fa-user-circle"></i></span></td>
+                            <td>@Html.DisplayFor(model => model.SupplierName)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="icon text-black-50"><i class="fas fa-envelope"></i></span></td>
+                            <td>@Html.DisplayFor(model => model.Email)</td>
+                        </tr>
+                        <tr>
+                            <td> <span class="icon text-black-50"><i class="fas fa-phone"></i></span></td>
+                            <td> @Html.DisplayFor(model => model.Phone)</td>
+                        </tr>
+                        <tr>
+                            <td> <span class="icon text-black-50"><i class="fas fa-address-book"></i></span></td>
+                            <td>@Html.DisplayFor(model => model.Address)</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+           
+        </div>
+        <div class="col-md-6">
 
-        <dd>
-            @Html.DisplayFor(model => model.SupplierCode)
-        </dd>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SupplierName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.SupplierName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
-    </dl>
+<div class="row justify-content-center">
+    @Html.ActionLink("Actualizar", "Edit", new { id = Model.Id },new { @class="btn btn-sm btn-warning m-1"}) 
+    @Html.ActionLink("Cancelar", "Index",null,new {@class="btn btn-sm btn-danger m-1" })
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

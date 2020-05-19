@@ -10,6 +10,7 @@ using ControlInventario.Models;
 
 namespace ControlInventario.Controllers
 {
+    [Authorize]
     public class SuppliersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -17,7 +18,7 @@ namespace ControlInventario.Controllers
         // GET: Suppliers
         public ActionResult Index()
         {
-            return View(db.SupplierModels.ToList());
+            return View(db.Suppliers.ToList());
         }
 
         // GET: Suppliers/Details/5
@@ -27,12 +28,12 @@ namespace ControlInventario.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SupplierModels supplierModels = db.SupplierModels.Find(id);
-            if (supplierModels == null)
+            Supplier supplier = db.Suppliers.Find(id);
+            if (supplier == null)
             {
                 return HttpNotFound();
             }
-            return View(supplierModels);
+            return View(supplier);
         }
 
         // GET: Suppliers/Create
@@ -46,16 +47,16 @@ namespace ControlInventario.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,SupplierCode,SupplierName,Email,Phone,Address")] SupplierModels supplierModels)
+        public ActionResult Create( Supplier supplier)
         {
             if (ModelState.IsValid)
             {
-                db.SupplierModels.Add(supplierModels);
+                db.Suppliers.Add(supplier);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(supplierModels);
+            return View(supplier);
         }
 
         // GET: Suppliers/Edit/5
@@ -65,12 +66,12 @@ namespace ControlInventario.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SupplierModels supplierModels = db.SupplierModels.Find(id);
-            if (supplierModels == null)
+            Supplier supplier = db.Suppliers.Find(id);
+            if (supplier == null)
             {
                 return HttpNotFound();
             }
-            return View(supplierModels);
+            return View(supplier);
         }
 
         // POST: Suppliers/Edit/5
@@ -78,15 +79,15 @@ namespace ControlInventario.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,SupplierCode,SupplierName,Email,Phone,Address")] SupplierModels supplierModels)
+        public ActionResult Edit([Bind(Include = "Id,SupplierCode,SupplierName,Email,Phone,Address")] Supplier supplier)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(supplierModels).State = EntityState.Modified;
+                db.Entry(supplier).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(supplierModels);
+            return View(supplier);
         }
 
         // GET: Suppliers/Delete/5
@@ -96,12 +97,12 @@ namespace ControlInventario.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SupplierModels supplierModels = db.SupplierModels.Find(id);
-            if (supplierModels == null)
+            Supplier supplier = db.Suppliers.Find(id);
+            if (supplier == null)
             {
                 return HttpNotFound();
             }
-            return View(supplierModels);
+            return View(supplier);
         }
 
         // POST: Suppliers/Delete/5
@@ -109,8 +110,8 @@ namespace ControlInventario.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            SupplierModels supplierModels = db.SupplierModels.Find(id);
-            db.SupplierModels.Remove(supplierModels);
+            Supplier supplier = db.Suppliers.Find(id);
+            db.Suppliers.Remove(supplier);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

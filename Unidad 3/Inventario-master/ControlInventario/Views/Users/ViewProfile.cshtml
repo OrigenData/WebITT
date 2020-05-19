@@ -1,0 +1,53 @@
+﻿@model ControlInventario.Models.ApplicationUser
+@{
+    ViewBag.Title = "Profile";
+}
+
+<div class="row justify-content-between">
+    <div class="col-md-6">
+        <div class="card">
+            <img src="~/Content/img/perfil/@Model.Picture" alt="Foto de Perfil" />
+            <div class="card-header">Bienvenido a tu Perfil @Model.Email </div>
+            <div class="card-body">
+                <table>
+                    <tr>
+                        <td>Correo Electrónico : </td>
+                        <td>@Model.Email</td>
+                    </tr>
+                    <tr>
+                        <td>UserName : </td>
+                        <td>@Model.UserName</td>
+                    </tr>
+                    <tr>
+                        <td>Telefono : </td>
+                        <td>@Model.PhoneNumber</td>
+                    </tr>
+                    <tr>
+                        
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">Actualiza tu Perfil</div>
+            <div class="card-body">
+                <form action="@Url.Action("EditProfile","Users")" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="col-md-4">Foto</label>
+                        <div class="col-md-10">
+                            <input type="file" name="Picture" class="form-control-file" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p>
+                            <input type="submit" name="submit" value="Guardar" class="btn btn-outline-primary btn-sm" />
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

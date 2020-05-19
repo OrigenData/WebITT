@@ -1,57 +1,49 @@
-﻿@model IEnumerable<ControlInventario.Models.SupplierModels>
+﻿@model IEnumerable<ControlInventario.Models.Supplier>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a  href="@Url.Action("Create","Suppliers")" class="btn btn-primary btn-sm btn-icon-split">
+        @* Si no encuentras iconos ir a Font Awesome *@
+        <span class="icon text-white-50"> <i class="fas fa-plus"></i> </span>
+        <span class="text">Nuevo Proveedor</span>
+    </a>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.SupplierCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SupplierName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.SupplierCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SupplierName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+<div class="row justify-content-center">
+    <p>
+        Lista de Proveedores
+    </p>
+</div>
 
-</table>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        
+            <div class="col-xl-3 col-md-3 mb-4">
+                <a href="@Url.Action("Details","Suppliers",new { id=item.Id})">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">@item.SupplierName</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">@item.SupplierCode</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-store fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        
+    
+    }
+    
+</div>
+

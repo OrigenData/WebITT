@@ -10,6 +10,7 @@ using ControlInventario.Models;
 
 namespace ControlInventario.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -17,8 +18,8 @@ namespace ControlInventario.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            var productModels = db.ProductModels.Include(p => p.Supplir);
-            return View(productModels.ToList());
+            var products = db.Products.Include(p => p.Supplier);
+            return View(products.ToList());
         }
 
         // GET: Products/Details/5
@@ -28,18 +29,19 @@ namespace ControlInventario.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProductModels productModels = db.ProductModels.Find(id);
-            if (productModels == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(productModels);
+            return View(product);
         }
 
         // GET: Products/Create
+       
         public ActionResult Create()
         {
-            ViewBag.SupplirId = new SelectList(db.SupplierModels, "id", "SupplierCode");
+            ViewBag.SupplierId = new SelectList(db.Suppliers, "Id", "SupplierName");
             return View();
         }
 
@@ -48,33 +50,34 @@ namespace ControlInventario.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ProductCode,ProductName,Description,Quantity,Price,SupplirId")] ProductModels productModels)
+        public ActionResult Create([Bind(Include = "Id,ProductCode,ProductName,Description,Quantity,Price,SupplierId")] Product product)
         {
             if (ModelState.IsValid)
             {
-                db.ProductModels.Add(productModels);
+                db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.SupplirId = new SelectList(db.SupplierModels, "id", "SupplierCode", productModels.SupplirId);
-            return View(productModels);
+            ViewBag.SupplierId = new SelectList(db.Suppliers, "Id", "SupplierCode", product.SupplierId);
+            return View(product);
         }
 
         // GET: Products/Edit/5
+      
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProductModels productModels = db.ProductModels.Find(id);
-            if (productModels == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.SupplirId = new SelectList(db.SupplierModels, "id", "SupplierCode", productModels.SupplirId);
-            return View(productModels);
+            ViewBag.SupplierId = new SelectList(db.Suppliers, "Id", "SupplierCode", product.SupplierId);
+            return View(product);
         }
 
         // POST: Products/Edit/5
@@ -82,16 +85,16 @@ namespace ControlInventario.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ProductCode,ProductName,Description,Quantity,Price,SupplirId")] ProductModels productModels)
+        public ActionResult Edit([Bind(Include = "Id,ProductCode,ProductName,Description,Quantity,Price,SupplierId")] Product product)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(productModels).State = EntityState.Modified;
+                db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.SupplirId = new SelectList(db.SupplierModels, "id", "SupplierCode", productModels.SupplirId);
-            return View(productModels);
+            ViewBag.SupplierId = new SelectList(db.Suppliers, "Id", "SupplierCode", product.SupplierId);
+            return View(product);
         }
 
         // GET: Products/Delete/5
@@ -101,12 +104,12 @@ namespace ControlInventario.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProductModels productModels = db.ProductModels.Find(id);
-            if (productModels == null)
+            Product product = db.Products.Find(id);
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(productModels);
+            return View(product);
         }
 
         // POST: Products/Delete/5
@@ -114,10 +117,16 @@ namespace ControlInventario.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ProductModels productModels = db.ProductModels.Find(id);
-            db.ProductModels.Remove(productModels);
+            Product product = db.Products.Find(id);
+            db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult ProductBySupplier(int supplierId)
+        {
+            var products = db.Products.Where(p => p.SupplierId == supplierId).ToList();
+            return View(products);
         }
 
         protected override void Dispose(bool disposing)

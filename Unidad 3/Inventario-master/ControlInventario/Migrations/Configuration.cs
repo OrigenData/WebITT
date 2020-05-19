@@ -10,6 +10,7 @@ namespace ControlInventario.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "ControlInventario.Models.ApplicationDbContext";
         }
 
         protected override void Seed(ControlInventario.Models.ApplicationDbContext context)
