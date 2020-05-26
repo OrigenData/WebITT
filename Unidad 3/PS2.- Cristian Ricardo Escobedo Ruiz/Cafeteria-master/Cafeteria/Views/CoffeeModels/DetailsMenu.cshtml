@@ -1,0 +1,109 @@
+﻿@model ControlInventario.Models.CoffeeModels
+
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+    <div style="padding:50px">
+        <div class="row">
+
+            <p>
+
+                <div class="col-lg-6">
+
+                    <!-- Default Card Example -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h2>Informacion</h2>
+                        </div>
+                        <div class="card-body">
+
+
+                            <div>
+                                <h4>@Html.DisplayFor(model => model.Title)</h4>
+                                <hr />
+                                <dl class="dl-horizontal">
+
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.NutritionInformation)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.NutritionInformation)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Ingredients)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Ingredients)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Description)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Description)
+                                    </dd>
+
+
+
+                                </dl>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="col-lg-6">
+
+                    <!-- Default Card Example -->
+                    <div class="mb-4">
+
+
+
+                        <img style="height: 400px; border-radius: 50px; margin: 45px" class="img-responsible;" src="@Html.DisplayFor(model => model.ImagenCoffee)" />
+
+
+                    </div>
+
+
+
+
+            </p>
+
+
+
+        </div>
+
+
+        <p>
+            <a href="@Url.Action("Create", "OrdersModels")" class="btn btn-success btn-icon-split">
+                <span class="icon text-white-50">
+                    <i class="fas fa-check"></i>
+                </span>
+                <span class="text">Ordenar  @Html.DisplayFor(model => model.Title)</span>
+            </a>
+
+            <a href="@Url.Action("Menu", "Home")" class="btn btn-secondary btn-icon-split">
+                <span class="icon text-white-50">
+                    <i class="fas fa-arrow-right"></i>
+                </span>
+                <span class="text">Volver al Menu</span>
+            </a>
+
+
+        </p>
+
+
+    </div>
